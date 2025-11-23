@@ -1,0 +1,50 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: cabecalho('Painel de Controle - Actuator')}" />
+
+<body>
+	
+	<div th:replace="~{fragmentos :: form-logout}" />
+	
+	<div th:replace="~{fragmentos :: idioma(${uri})}" />
+	
+	<div class="container">
+		<div class="row">
+			<h1><span th:text="#{link.acesso-actuator}"></span></h1>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-hover">
+
+					<tr>
+						<td th:text="#{actuator.uso_cpu}"></td>
+						<td><span th:text="${uso_cpu}"></span></td>
+					</tr>
+					
+					<tr>
+						<td th:text="#{actuator.uso_mem_jvm}">Uso de memória pela JVM (MB): </td>
+						<td><span th:text="${uso_jvm}"></span></td>
+					</tr>
+					
+					<tr>
+						<td th:text="#{actuator.max_mem_jvm}">Valor total de memória JVM (GB): </td>
+						<td><span th:text="${max_jvm}"></span></td>
+					</tr>
+					
+
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<a href="/index"><span th:text="#{lista_discentes}"></span></a>
+		</div>
+	</div>
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

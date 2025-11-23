@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ecoLesson - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #142850;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .login-container {
+            max-width: 380px;
+            margin: 8vw auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(36, 56, 87, 0.18);
+            padding: 35px 34px 28px 34px;
+            text-align: center;
+        }
+        .login-title {
+            color: #142850;
+            font-size: 2.2em;
+            margin-bottom: 6px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            margin-top: 13px;
+            margin-bottom: 22px;
+            border-radius: 7px;
+            border: 1px solid #274472;
+            background: #f3faff;
+            font-size: 1em;
+        }
+        .btn-login {
+            background-color: #274472;
+            color: #fff;
+            border: none;
+            padding: 10px 0;
+            width: 100%;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.18s;
+        }
+        .btn-login:hover {
+            background-color: #142850;
+        }
+        .eco-subtitle {
+            font-size: 1.02em;
+            color: #274472;
+            margin-bottom: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-title">ecoLesson</div>
+        <div class="eco-subtitle">Sua plataforma de ensino consciente</div>
+        <form th:action="@{/login}" method="post">
+            <input class="form-control" type="text" id="username" name="username" placeholder="email">
+            <input class="form-control" type="password" id="password" name="password" placeholder="Senha">
+            
+            <div th:if="${param.falha}">
+                <p style="color:#d32f2f;"><b>email ou senha inválidos</b></p>
+            </div>
+            
+            <button type="submit" class="btn-login">Entrar</button>
+        </form>
+        <div th:if="${param.logout}">
+            <p style="color: #388e3c; margin-top: 18px;"><b>Logout realizado com sucesso</b></p>
+        </div>
+    </div>
+</body>
+</html>

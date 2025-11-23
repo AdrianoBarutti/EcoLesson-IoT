@@ -1,0 +1,38 @@
+body {
+  background: linear-gradient(120deg, #142850, #4170f3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+.course-modal {
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 8px 30px rgba(20,40,80,0.17);
+  max-width: 820px;
+  margin: 54px auto;
+  padding: 58px 64px 58px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-control {
+  border-radius: 8px;
+  border: 1.5px solid #274472;
+  width: 100%;
+}
+.eco-btn {
+  border-radius: 12px;
+  background: linear-gradient(93deg, #2498e3 80%, #4170f3);
+  color: #fff;
+  border: none;
+  font-size: 1.07em;
+  font-weight: 700;
+  padding: .89em 0 .10em 0;
+  margin-bottom: 4px;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 3px 12px #2498e322;
+  transition: background .14s, transform .08s;
+  outline: none;
+}
+.eco-btn:hover { background: #1979b9; transform: translateY(-2px) scale(1.02);}

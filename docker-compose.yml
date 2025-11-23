@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:latest
+    container_name: redpanda
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp=1
+      - --memory=1G
+      - --reserve-memory=0M
+      - --node-id=0
+      - --check=false
+    ports:
+      - "9092:9092"     # Porta Kafka/Redpanda
+      - "9644:9644"     # Admin HTTP
+    networks:
+      - mensageria
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # Web console
+    networks:
+      - mensageria
+
+networks:
+  mensageria:
+    driver: bridge

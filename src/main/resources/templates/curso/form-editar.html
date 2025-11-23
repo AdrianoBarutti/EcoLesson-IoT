@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Curso - ecoLesson</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        body {
+            background: linear-gradient(130deg, #16224C 65%, #4170f3 100%);
+            font-family: 'Segoe UI', 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .edit-card {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(20,30,56,.11);
+            padding: 36px 42px 32px 42px;
+            min-width: 340px;
+            max-width: 380px;
+            margin: 36px auto;
+        }
+        .edit-card h2 {
+            color: #1E3260;
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .form-fields {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .form-fields input, .form-fields textarea {
+            font-size: 1em;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1.6px solid #1e326040;
+            outline: none;
+            background: #f7fcff;
+            margin-bottom: 4px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #1E3260;
+        }
+        .eco-btn {
+            background: linear-gradient(93deg, #2498e3 90%, #32c6ff);
+            color: #fff;
+            border-radius: 21px;
+            border: none;
+            font-size: 1em;
+            font-weight: 600;
+            padding: 0.7em 0.7em;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 9px;
+            box-shadow: 0 3px 10px 0 rgba(36,152,227, .10);
+            transition: background 0.15s, transform 0.08s;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            display: inline-block;
+        }
+        .eco-btn:hover {
+            background: #1979b9;
+            transform: translateY(-3px) scale(1.01);
+        }
+    </style>
+</head>
+<body>
+    <div class="edit-card">
+        <h2>Editar Curso</h2>
+        <form th:action="@{'/cursos/editar/' + ${curso.idCurso}}" method="post" class="form-fields">
+            <input type="text" name="nomeCurso" th:value="${curso.nomeCurso}" placeholder="Nome do curso" required />
+            <textarea name="descricao" placeholder="Descrição" rows="2" required th:text="${curso.descricao}"></textarea>
+            <input type="number" name="qtHoras" th:value="${curso.qtHoras}" placeholder="Horas" required min="1" />
+            <button type="submit" class="eco-btn">Salvar Alteração</button>
+        </form>
+    </div>
+</body>
+</html>

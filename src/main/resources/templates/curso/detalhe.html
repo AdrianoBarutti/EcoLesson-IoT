@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: cabecalho('ecoLesson - Curso')}"></head>
+<link href="/css/ecolesson.css" rel="stylesheet"/>
+<body>
+<div style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-top:30px; padding:0 32px;">
+  <div style="color:#fff; font-size:1.21em; font-weight:600;">
+    Olá, <span th:text="${usuario}">Aluno</span>
+  </div>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <button style="padding:7px 20px;background:linear-gradient(93deg,#2498e3 70%,#4170f3);border-radius:14px;color:#fff;font-weight:700;border:none;box-shadow:0 2px 7px #2498e366;transition:.15s;" onclick="window.location.href='?lang=pt'">PT BR</button>
+    <button style="padding:7px 20px;background:linear-gradient(93deg,#2498e3 70%,#4170f3);border-radius:14px;color:#fff;font-weight:700;border:none;box-shadow:0 2px 7px #2498e366;transition:.15s;" onclick="window.location.href='?lang=en'">ENG</button>
+    <form th:action="@{/logout}" method="post" style="display:inline;">
+      <button style="padding:7px 20px;background:linear-gradient(93deg,#f36a6a 65%,#ad3030);border-radius:14px;color:#fff;font-weight:700;border:none;box-shadow:0 2px 7px #ad303066;transition:.15s;" type="submit">Logout</button>
+    </form>
+  </div>
+</div>
+<main>
+  <div class="course-modal" style="background:white; border-radius:22px; box-shadow:0 8px 30px rgba(20,40,80,0.17); max-width:820px; margin:54px auto; padding:58px 64px 58px 64px; display:flex; flex-direction:column; align-items:center;">
+    <div style="width:100%; min-height:90px; border-radius:16px; border:2.5px solid #142850; background:#fafcfe; margin-bottom:32px; padding:20px 20px 16px 20px; box-sizing:border-box;">
+      <span style="color:#142850; font-size:1.14em;" th:text="${resposta}">area de resposta do chat</span>
+    </div>
+    <form th:action="@{/enviar_mensagem_spring_ai_personalizado}" method="post" style="width:97%; margin-bottom:18px;">
+      <input class="form-control" type="text" name="pergunta" placeholder="escreva aqui" required style="width:100%;padding:.94em 1em;margin-bottom:8px;font-size:1.14em;">
+      <input type="hidden" name="idCurso" th:value="${curso.idCurso}" />
+      <button class="eco-btn" type="submit" style="width:100%;font-size:1.13em;">Perguntar IA</button>
+    </form>
+   <form th:action="@{'/cursos/' + ${curso.idCurso} + '/concluir'}" method="post" style="width:82%;margin-top:28px;" th:object="${curso}">
+  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+  <button type="submit" class="eco-btn" style="width:100%;font-size:1.18em;">Gerar certificado</button>
+</form>
+    <!-- Botão de voltar -->
+    <a th:href="@{/}" class="eco-btn" style="margin-top:34px;max-width:240px;">Voltar para tela principal</a>
+  </div>
+</main>
+<script th:replace="~{fragmentos :: script-js}" />
+</body>
+</html>

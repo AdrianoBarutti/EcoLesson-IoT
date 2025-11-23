@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: cabecalho('EcoLesson - Aluno')}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+<style>
+  body {
+    background: linear-gradient(130deg, #16224C 65%, #4170f3 100%);
+    font-family: 'Segoe UI', 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  .navbar {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 38px;
+  }
+  .user-greeting {
+    font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.21em;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: none;
+    z-index: 10;
+    padding-top: 2px;
+  }
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+  .lang-btn {
+    background: #2498e3;
+    color: #fff;
+    border-radius: 19px;
+    border: none;
+    padding: 5px 18px;
+    font-size: 1em;
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 6px;
+    letter-spacing: .03em;
+    transition: background .22s, box-shadow .22s;
+    box-shadow: 0 2px 6px #2498e340;
+  }
+  .lang-btn:hover {
+    background: #1979b9;
+    box-shadow: 0 3px 12px #2498e370;
+  }
+  .navbar-menu a {
+    color: #fff;
+    font-weight: 600;
+    margin-left:14px;
+    letter-spacing: .09em;
+    text-decoration: none;
+    font-size: 1.08em;
+    transition: color .16s;
+  }
+  .navbar-menu a:hover {
+    color: #52d0fd;
+  }
+  .eco-main-title {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 3.1em;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    margin: 98px 0 40px 0;
+    letter-spacing: 1.9px;
+    line-height: 1.16em;
+    filter: drop-shadow(0 10px 28px rgba(65,112,243,.13));
+    user-select: none;
+  }
+  .dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 54px;
+    padding: 26px 0 0 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .dashboard-card {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 8px 30px rgba(20,30,56,.16);
+    padding: 36px 38px 44px 38px;
+    min-width: 340px;
+    flex: 1 1 300px;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .dashboard-card h2 {
+    color: #1E3260;
+    font-size: 1.27em;
+    font-weight: bold;
+    margin-bottom: 26px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .course-group, .cert-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 17px;
+  }
+  .eco-btn {
+    background: linear-gradient(93deg, #2498e3 90%, #32c6ff);
+    color: #fff;
+    border-radius: 21px;
+    border: none;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0.7em 0.7em;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 5px;
+    box-shadow: 0 3px 10px 0 rgba(36,152,227, .10);
+    transition: background 0.15s, transform 0.08s;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+  }
+  .eco-btn:hover {
+    background: #1979b9;
+    transform: translateY(-3px) scale(1.02);
+  }
+  .cert-row {
+    background: #f7fcff;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 19px;
+    width: 99%;
+    box-sizing: border-box;
+    font-size: 1.04em;
+    font-weight: 500;
+    color: #174066;
+  }
+  .btn-cursos-link {
+    margin: 48px auto 16px auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+  @media (max-width:1220px) {
+    .dashboard-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 38px;
+      padding-top: 22px;
+    }
+    .eco-main-title { margin-top:48px; margin-bottom:24px;}
+  }
+  @media (max-width:720px) {
+    .dashboard-card { min-width: 95vw; max-width: 98vw; padding: 16px 10px 22px 10px;}
+    .dashboard-container { padding-top: 2vw;}
+    .eco-main-title { font-size:2em; margin:12px 0 24px 0;}
+    .user-greeting { left:10px; font-size:.97em;}
+  }
+</style>
+</head>
+<body>
+<div class="navbar">
+    <span class="user-greeting">
+        Olá, <span th:text="${usuario.nome}">admin ecoLesson</span>
+    </span>
+    <div class="navbar-menu">
+        <button class="lang-btn" onclick="window.location.href='?lang=pt'">pt</button>
+        <button class="lang-btn" onclick="window.location.href='?lang=en'">eng</button>
+        <a href="/logout" style="font-weight:700"
+           onclick="event.preventDefault();document.getElementById('logoutForm').submit();">logout</a>
+        <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+    </div>
+</div>
+<div class="eco-main-title">ECO<br>LESSON</div>
+
+<div class="dashboard-container">
+  <!-- Cursos -->
+  <div class="dashboard-card">
+    <h2>Cursos de Sustentabilidade</h2>
+    <div class="course-group">
+      <div th:if="${#lists.isEmpty(cursosDisponiveis)}" style="color:#748eb0;">
+        Nenhum curso disponível no momento.
+      </div>
+      <div th:each="curso : ${cursosDisponiveis}">
+        <a class="eco-btn" th:text="${curso.nomeCurso}" th:href="@{/cursos/{id}(id=${curso.idCurso})}"></a>
+      </div>
+    </div>
+  </div>
+  <!-- Certificados -->
+  <div class="dashboard-card">
+    <h2>Meus Certificados</h2>
+    <div class="cert-group">
+      <div th:if="${#lists.isEmpty(certificados)}" style="color:#748eb0;">
+        Você ainda não concluiu nenhum curso.
+      </div>
+      <div th:each="certificado : ${certificados}" class="cert-row">
+        <span th:text="${certificado.curso.nomeCurso} + ' - ' + ${#temporals.format(certificado.dtEmissao,'dd/MM/yyyy')}"></span>
+        <a class="eco-btn" th:href="@{/certificado/{id}(id=${certificado.idCertificado})}" style="width:auto;padding:0.46em 1.2em;">Ver Certificado</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script th:replace="~{fragmentos :: script-js}" />
+</body>
+</html>

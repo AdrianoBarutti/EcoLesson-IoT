@@ -1,0 +1,14 @@
+ALTER TABLE USUARIO_FUNCAO_TAB
+    ADD CONSTRAINT fk_funcao_usuario FOREIGN KEY (id_funcao) REFERENCES FUNCAO(id);
+
+ALTER TABLE USUARIO_FUNCAO_TAB
+    ADD CONSTRAINT fk_usuario_funcao FOREIGN KEY (id_usuario) REFERENCES T_USUARIOS(id_usuario);
+
+ALTER TABLE T_CURSO
+    ADD CONSTRAINT fk_curso_professor FOREIGN KEY (id_professor) REFERENCES T_USUARIOS(id_usuario);
+
+ALTER TABLE T_CERTIFICADO 
+    ADD CONSTRAINT fk_certificado_usuario FOREIGN KEY (id_usuario) REFERENCES T_USUARIOS(id_usuario);
+
+ALTER TABLE T_CERTIFICADO 
+    ADD CONSTRAINT fk_certificado_curso FOREIGN KEY (id_curso) REFERENCES T_CURSO(id_curso);

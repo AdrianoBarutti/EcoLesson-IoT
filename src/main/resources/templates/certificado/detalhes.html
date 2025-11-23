@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: cabecalho('Certificado - EcoLesson')}" />
+<link href="/css/ecolesson.css" rel="stylesheet"/>
+<style>
+  body {
+    background: linear-gradient(130deg, #16224C 65%, #4170f3 100%);
+    font-family: 'Segoe UI', 'Montserrat', Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .certificado-main {
+    background: #fff;
+    max-width: 620px;
+    margin: 64px auto;
+    padding: 54px 48px 64px 48px;
+    border-radius: 32px;
+    box-shadow: 0 9px 32px rgba(20, 40, 80, .18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .eco-title {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 2.61em;
+    font-weight: 900;
+    color: #174066;
+    letter-spacing: 2.0px;
+    margin-bottom: 38px;
+    margin-top: 0;
+    user-select: none;
+  }
+  .cert-nome {
+    font-size: 1.34em;
+    font-weight: 700;
+    margin-bottom: 22px;
+    color: #1E3260;
+    letter-spacing: 1px;
+  }
+  .cert-label {
+    margin-top: 26px;
+    font-size: 1.06em;
+    color: #4170f3;
+    font-weight: 600;
+    letter-spacing: .03em;
+  }
+  .cert-data {
+    font-size: 1.18em;
+    color: #174066;
+    font-weight: 600;
+    margin-top: 12px;
+    letter-spacing: .04em;
+  }
+  .cert-footer {
+    margin-top:38px;
+  }
+  .eco-btn {
+    background: linear-gradient(93deg, #2498e3 90%, #32c6ff);
+    color: #fff;
+    border-radius: 21px;
+    border: none;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0.79em 2.6em;
+    cursor: pointer;
+    box-shadow: 0 3px 10px 0 rgba(36,152,227, .10);
+    transition: background 0.15s, transform 0.08s;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+  }
+  .eco-btn:hover {
+    background: #1979b9;
+    transform: translateY(-3px) scale(1.02);
+  }
+</style>
+<body>
+  <div class="certificado-main">
+    <div class="eco-title">ECOLESSON</div>
+    <div class="cert-nome" th:text="${certificado.curso.nomeCurso}">Nome do Certificado</div>
+    <div class="cert-label">Certificado emitido para:</div>
+    <div class="cert-nome" th:text="${certificado.usuario.nome}">Nome do Aluno</div>
+    <div class="cert-label">Data de emissão:</div>
+    <div class="cert-data" th:text="${#temporals.format(certificado.dtEmissao,'dd/MM/yyyy')}">16/11/2025</div>
+
+    <div class="cert-footer">
+      <a th:href="@{/}" class="eco-btn">Voltar para principal</a>
+    </div>
+  </div>
+</body>
+</html>
